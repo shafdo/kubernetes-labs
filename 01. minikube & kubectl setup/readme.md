@@ -61,6 +61,12 @@ http://192.168.49.2:31779
 
 ![alt text](image.png)
 
+```
+$ kubectl get deployments
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+hello-minikube   1/1     1            1           33m
+```
+
 ## 4. Cleanup
 
 ```
