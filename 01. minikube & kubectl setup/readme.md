@@ -79,6 +79,10 @@ hello-minikube   1/1     1            1           33m
 
 ```
 $ kubectl expose deployment hello-minikube --type=NodePort --port=8080
+
+or
+
+$ kubectl expose deployment hello-minikube --type=NodePort --port=8081 --target-port=8080
 ```
 
 - Now we can get the URL for the service
@@ -89,6 +93,20 @@ http://192.168.49.2:31779
 ```
 
 ![alt text](image.png)
+
+### Question: NodePort vs Port vs TargetPort
+
+- TargetPort (optional) = Port inside the Pod which is your app is running on 8080.
+
+- Port = Port of the Service (internal cluster port). Other services inside cluster use this (8081). This option (`port`) will be used for both pod and cluster port mappings if TargetPort is not provided.
+
+- NodePort = auto (31779). This is what accessable by us.
+
+```
+Browser → 192.168.49.2:31779 (NodePort)
+        → Service:8081
+        → Pod:8080
+```
 
 ## 4. Cleanup
 
