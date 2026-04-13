@@ -32,7 +32,7 @@
 
 ## 3. Starting the cluster & deploy a service
 
-- Create a cluster
+- Start a Kubernetes cluster with minikube
 
 ```
 $ minikube start        # Start the k8 cluster
@@ -44,30 +44,49 @@ host: Running
 kubelet: Running
 apiserver: Running
 kubeconfig: Configured
+```
 
+- Now that the cluster is started. We can use kubectl to control the cluster.
+
+- Bellow commands we can get the nodes running. Right now there are only 1 node (my local machine).
+
+```
 $ kubectl get nodes
 NAME       STATUS   ROLES           AGE     VERSION
 minikube   Ready    control-plane   3m11s   v1.34.0
 ```
 
-- Deploy a example service ([docs](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service:~:text=4-,Deploy%20applications,-Service))
+- Create a new deployment: A deployment manages Pods for you. Think of it like a manager of pods. It handles Scaling (replicas), Updates (rolling updates), Self-healing (recreate failed pods).
 
 ```
 $ kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
-
-$ kubectl expose deployment hello-minikube --type=NodePort --port=8080
-
-$ minikube service hello-minikube --url
-http://192.168.49.2:31779
 ```
 
-![alt text](image.png)
+- Get the created deployments
 
 ```
 $ kubectl get deployments
 NAME             READY   UP-TO-DATE   AVAILABLE   AGE
 hello-minikube   1/1     1            1           33m
 ```
+
+- Creating a service. Exposes your Pods to the outside giving it a stable network endpoint exposing your app ([docs](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service:~:text=4-,Deploy%20applications,-Service))
+  1. Gives a stable network endpoint
+  2. Routes traffic to Pods
+  3. Load balances between Pods
+
+```
+$ kubectl expose deployment hello-minikube --type=NodePort --port=8080
+```
+
+- Now we can get the URL for the service
+
+```
+$ minikube service hello-minikube --url
+http://192.168.49.2:31779
+```
+
+![alt text](image.png)
 
 ## 4. Cleanup
 

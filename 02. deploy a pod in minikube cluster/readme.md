@@ -1,3 +1,5 @@
+- Objective: Create a minikube cluster and start a pod inside that cluster
+
 ## 1. Start Kubernetes Cluster
 
 ```
