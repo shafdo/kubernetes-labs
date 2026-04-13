@@ -18,6 +18,8 @@
 
 ## 2. Install minikube
 
+- Minikube creates and manages a cluster, while kubectl interacts with and controls it
+
 - Download & install: https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download
 
   ```
