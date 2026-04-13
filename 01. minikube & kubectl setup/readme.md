@@ -58,11 +58,13 @@ minikube   Ready    control-plane   3m11s   v1.34.0
 
 - Create a new deployment: A deployment manages Pods for you. Think of it like a manager of pods. It handles Scaling (replicas), Updates (rolling updates), Self-healing (recreate failed pods).
 
+- Rather than directly interacting with pods managed by a deployment. We must interact with the deployment.
+
 ```
 $ kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
 ```
 
-- Get the created deployments
+- Get all deployments
 
 ```
 $ kubectl get deployments
@@ -70,7 +72,7 @@ NAME             READY   UP-TO-DATE   AVAILABLE   AGE
 hello-minikube   1/1     1            1           33m
 ```
 
-- Creating a service. Exposes your Pods to the outside giving it a stable network endpoint exposing your app ([docs](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service:~:text=4-,Deploy%20applications,-Service))
+- Bellow command creates a service. A service exposes your pods to the outside giving it a stable network endpoint exposing your app ([docs](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download#Service:~:text=4-,Deploy%20applications,-Service))
   1. Gives a stable network endpoint
   2. Routes traffic to Pods
   3. Load balances between Pods
