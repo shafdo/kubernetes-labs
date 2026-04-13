@@ -1,4 +1,6 @@
-- Objective: Create a minikube cluster and start a pod inside that cluster
+- Objective: Create a minikube cluster and start a pod inside that cluster.
+
+- Directly creating Pods is not recommended for production. Use Deployments for production workloads to ensure scalability and self-healing. Creating Pods directly is acceptable only for development or testing.
 
 ## 1. Start Kubernetes Cluster
 
