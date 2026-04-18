@@ -20,7 +20,7 @@ Test your understanding of Minikube, Deployments, Pods, and Services.
    - Get detailed information about one of the Pods using `kubectl describe pod <pod-name>`.
 
 3. **Expose the Deployment**
-   - Expose the `hello-minikube` Deployment as a NodePort service on **port 8081**, targeting container port **8080**.
+   - Expose the `hello-minikube` deployment as service port on **port 8081**, targeting pod port **8080**.
    - Get the URL for the service using Minikube.
    - Open the URL in a browser and verify that the service is working.
 
